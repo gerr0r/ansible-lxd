@@ -1,6 +1,7 @@
 ---
 - name: Adding local repository at /etc/apt/sources.list.d/
   hosts: users
+  gather_facts: false
   tasks:
     - name: Create local repository file
       copy:
