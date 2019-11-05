@@ -1,0 +1,13 @@
+---
+- name: Adding local repository at /etc/apt/sources.list.d/
+  hosts: users
+  tasks:
+    - name: Create local repository file
+      copy:
+        dest: /etc/apt/sources.list.d/localrepo.list
+        content: |
+          deb http://192.168.1.111/ubuntu/ bionic main restricted universe multiverse
+          deb http://192.168.1.111/ubuntu/ bionic-updates main restricted universe multiverse
+          deb http://192.168.1.111/ubuntu/ bionic-security main restricted universe multiverse
+
+...
