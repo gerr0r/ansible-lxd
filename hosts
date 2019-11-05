@@ -1,0 +1,12 @@
+[users]
+alpha
+beta
+
+[webservers]
+www
+
+[fileservers]
+ftp
+
+[databases]
+db
