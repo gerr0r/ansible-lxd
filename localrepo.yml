@@ -10,5 +10,11 @@
           deb http://192.168.1.111/ubuntu/ bionic main restricted universe multiverse
           deb http://192.168.1.111/ubuntu/ bionic-updates main restricted universe multiverse
           deb http://192.168.1.111/ubuntu/ bionic-security main restricted universe multiverse
-
+    - name: Check if sources.list file exists
+      stat: 
+        path: /etc/apt/sources.list 
+      register: file_check  
+    - name: Rename sources.list file # so it will not be read by apt program
+      command: mv /etc/apt/sources.list /etc/apt/sources.list.bak 
+      when: file_check.stat.exists
 ...
