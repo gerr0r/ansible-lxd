@@ -1,0 +1,16 @@
+---
+- name: Install apache on webservers
+  hosts: webservers
+  gather_facts: true
+  tasks:
+    - name: Install apache
+      apt:
+        name: apache2
+        state: present
+    - name: Set home page
+      copy: 
+        dest: /var/www/html/index.html
+        content: |
+          <p>Welcome page from {{ ansible_hostname }}!</p>
+          <p>Be good!</p>       
+...
