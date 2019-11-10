@@ -1,0 +1,10 @@
+---
+- name: Install apache on webservers
+  hosts: ftp 
+  gather_facts: false
+  tasks:
+    - name: Install FTP Server
+      apt:
+        name: vsftpd
+        state: present
+...
