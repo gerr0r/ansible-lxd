@@ -1,10 +1,23 @@
 ---
-- name: Install apache on webservers
+- name: Set up FTP server
   hosts: ftp 
   gather_facts: false
   tasks:
-    - name: Install FTP Server
+    - name: Install vsftpd
       apt:
         name: vsftpd
         state: present
+    - name: Backup config file
+      copy:
+        remote_src: yes
+        src: /etc/vsftpd.conf
+        dest: /etc/vsftpd.conf.orig    
+    - name: Create custom vsftpd.conf file in /etc
+      template: 
+        src: vsftpd.conf.j2
+        dest: /etc/vsftpd.conf    
+    - name: Reload configuration file
+      systemd:
+        name: vsftpd
+        state: reloaded    
 ...
