@@ -11,6 +11,6 @@
       copy: 
         dest: /var/www/html/index.html
         content: |
-          <p>Welcome page from {{ ansible_hostname }}!</p>
-          <p>Be good!</p>       
+          <p>Welcome page served from {{ ansible_hostname }}!</p>
+          <p>Nothing to do here!</p>       
 ...
